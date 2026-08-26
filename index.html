@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b5ed7">
+  <meta name="description" content="Radio Source Divine — La voix qui nourrit votre âme.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Radio Source Divine</title>
+</head>
+<body>
+  <header class="hero">
+    <div class="logo">RSD</div>
+    <div>
+      <h1>Radio Source Divine</h1>
+      <p>La voix qui nourrit votre âme</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="player-card">
+      <div class="live"><span></span> EN DIRECT</div>
+      <h2>Écouter Radio Source Divine</h2>
+      <p id="status">Prêt à écouter</p>
+      <audio id="radio" preload="none" controls></audio>
+      <button id="play" class="primary">▶ ÉCOUTER EN DIRECT</button>
+      <button id="stop" class="secondary">■ Arrêter</button>
+      <button id="install" class="install" hidden>📲 Installer l’application</button>
+    </section>
+
+    <section class="grid">
+      <article><div class="icon">🙏</div><h3>Vitamine Spirituelle</h3><p>Un temps de méditation, de prière et d’encouragement dans la Parole de Dieu.</p></article>
+      <article><div class="icon">📖</div><h3>Parole de Vie</h3><p>Des messages bibliques en français et en anglais pour fortifier votre foi.</p></article>
+      <article><div class="icon">💬</div><h3>Demande de prière</h3><p>Vous pouvez nous contacter pour partager votre sujet de prière.</p></article>
+      <article><div class="icon">📅</div><h3>Programmes</h3><p>Retrouvez prochainement l’horaire complet des émissions de Radio Source Divine.</p></article>
+    </section>
+
+    <section class="contact">
+      <h2>Restons connectés</h2>
+      <div class="buttons">
+        <a href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a>
+        <button id="share">Partager la radio</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Radio Source Divine • Source Divine Ministries</footer>
+  <script src="app.js"></script>
+</body>
+</html>
