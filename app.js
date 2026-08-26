@@ -176,7 +176,11 @@ if ("serviceWorker" in navigator) {
 
 /* ================= NOTIFICATIONS ================= */
 
-async function requestNotifications() {
+async function requestNotifications(),const notify = document.getElementById("notify");
+
+if (notify) {
+  notify.addEventListener("click", requestNotifications);
+} {
 
   if (!("Notification" in window)) {
 
