@@ -15,51 +15,31 @@ radio.src = STREAM;
 play.addEventListener("click", async () => {
   try {
     status.textContent = "Connexion à Radio Source Divine...";
-
     await radio.play();
-
-    status.textContent =
-      "🔴 Radio en direct — Bonne écoute !";
-
-  } catch (e) {
-
+    status.textContent = "🔴 Radio en direct — Bonne écoute !";
+  } catch (error) {
     status.textContent =
       "Impossible de démarrer la radio. Vérifiez votre connexion et réessayez.";
   }
 });
 
-
 stop.addEventListener("click", () => {
-
   radio.pause();
   radio.currentTime = 0;
-
   status.textContent = "Radio arrêtée";
-
 });
-
 
 radio.addEventListener("playing", () => {
-
-  status.textContent =
-    "🔴 Radio en direct — Bonne écoute !";
-
+  status.textContent = "🔴 Radio en direct — Bonne écoute !";
 });
-
 
 radio.addEventListener("waiting", () => {
-
-  status.textContent =
-    "Connexion au flux en cours...";
-
+  status.textContent = "Connexion au flux en cours...";
 });
 
-
 radio.addEventListener("error", () => {
-
   status.textContent =
     "Le flux n’est pas disponible pour le moment. Réessayez dans quelques instants.";
-
 });
 
 
@@ -68,14 +48,10 @@ radio.addEventListener("error", () => {
 async function shareRadio(button) {
 
   const shareData = {
-
     title: "Radio Source Divine",
-
     text:
       "📻 Écoutez Radio Source Divine en direct — La voix qui nourrit votre âme.",
-
     url: window.location.href
-
   };
 
   try {
@@ -86,54 +62,34 @@ async function shareRadio(button) {
 
     } else {
 
-      await navigator.clipboard.writeText(
-        window.location.href
-      );
+      await navigator.clipboard.writeText(window.location.href);
 
       if (button) {
-
         const original = button.innerHTML;
 
         button.innerHTML = "✅ Lien copié !";
 
         setTimeout(() => {
-
           button.innerHTML = original;
-
         }, 2500);
-
       }
-
     }
 
   } catch (error) {
-
     console.log("Partage annulé");
-
   }
-
 }
-
 
 if (share) {
-
   share.addEventListener("click", () => {
-
     shareRadio(share);
-
   });
-
 }
 
-
 if (shareBottom) {
-
   shareBottom.addEventListener("click", () => {
-
     shareRadio(shareBottom);
-
   });
-
 }
 
 
@@ -141,43 +97,47 @@ if (shareBottom) {
 
 let deferredPrompt = null;
 
+window.addEventListener("beforeinstallprompt", (event) => {
 
-window.addEventListener(
-  "beforeinstallprompt",
-  (event) => {
+  event.preventDefault();
 
-    event.preventDefault();
+  deferredPrompt = event;
 
-    deferredPrompt = event;
-
+  if (install) {
     install.hidden = false;
-
   }
-);
+
+});
 
 
 if (install) {
 
-  install.addEventListener(
-    "click",
-    async () => {
+  install.addEventListener("click", async () => {
 
-      if (!deferredPrompt) {
+    if (!deferredPrompt) {
 
-        return;
+      alert(
+        "Pour installer Radio Source Divine, ouvrez le menu ⋮ de Chrome et recherchez l'option d'installation."
+      );
 
-      }
+      return;
+    }
 
-      deferredPrompt.prompt();
+    deferredPrompt.prompt();
 
-      await deferredPrompt.userChoice;
+    const choice = await deferredPrompt.userChoice;
 
-      deferredPrompt = null;
+    if (choice.outcome === "accepted") {
 
-      install.hidden = true;
+      console.log("Application installée.");
 
     }
-  );
+
+    deferredPrompt = null;
+
+    install.hidden = true;
+
+  });
 
 }
 
@@ -189,18 +149,21 @@ if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
 
     navigator.serviceWorker
-      .register("sw.js")
-      .then(() => {
+      .register("/radio-source-divine/sw.js", {
+        scope: "/radio-source-divine/"
+      })
+      .then((registration) => {
 
         console.log(
-          "Service Worker enregistré."
+          "Service Worker enregistré :",
+          registration.scope
         );
 
       })
       .catch((error) => {
 
-        console.log(
-          "Erreur Service Worker:",
+        console.error(
+          "Erreur Service Worker :",
           error
         );
 
@@ -232,22 +195,20 @@ async function requestNotifications() {
 
     if (permission === "granted") {
 
-      new Notification(
-        "Radio Source Divine",
-        {
-          body:
-            "Merci ! Vous recevrez les notifications de Radio Source Divine.",
-          icon:
-            "icons/icon-192.png"
-        }
-      );
+      new Notification("Radio Source Divine", {
+        body:
+          "🔔 Les notifications de Radio Source Divine sont activées.",
+        icon:
+          "/radio-source-divine/icons/icon-192.png"
+      });
 
     }
 
   } catch (error) {
 
-    console.log(
-      "Notifications non disponibles."
+    console.error(
+      "Notifications non disponibles :",
+      error
     );
 
   }
@@ -255,8 +216,8 @@ async function requestNotifications() {
 }
 
 
-/* ================= MESSAGE CONSOLE ================= */
+/* ================= MESSAGE ================= */
 
 console.log(
-  "Radio Source Divine — La voix qui nourrit votre âme"
+  "📻 Radio Source Divine — La voix qui nourrit votre âme"
 );
