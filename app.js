@@ -12,15 +12,26 @@ const shareBottom = document.getElementById("shareBottom");
 
 radio.src = STREAM;
 
-play.addEventListener("click", async () => {
-  try {
-    status.textContent = "Connexion à Radio Source Divine...";
-    await radio.play();
-    status.textContent = "🔴 Radio en direct — Bonne écoute !";
-  } catch (error) {
-    status.textContent =
-      "Impossible de démarrer la radio. Vérifiez votre connexion et réessayez.";
-  }
+play.addEventListener("click", () => {
+
+  radio.src = STREAM;
+
+  radio.play()
+    .then(() => {
+
+      status.textContent =
+        "🔴 Radio en direct — Bonne écoute !";
+
+    })
+    .catch((error) => {
+
+      console.error("Erreur lecture radio :", error);
+
+      status.textContent =
+        "Cliquez sur ▶ dans le lecteur pour démarrer la radio.";
+
+    });
+
 });
 
 stop.addEventListener("click", () => {
