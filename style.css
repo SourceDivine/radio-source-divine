@@ -1,1 +1,434 @@
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f7fc;color:#132238}.hero{background:linear-gradient(135deg,#0b5ed7,#073b8f);color:#fff;padding:28px 20px;display:flex;align-items:center;gap:16px}.logo{width:64px;height:64px;border-radius:18px;background:#fff;color:#0b5ed7;display:grid;place-items:center;font-weight:800;font-size:22px;box-shadow:0 8px 25px #001f4d55}.hero h1{margin:0;font-size:26px}.hero p{margin:6px 0 0;opacity:.9}main{max-width:900px;margin:auto;padding:24px 16px}.player-card{background:#fff;border-radius:24px;padding:28px;text-align:center;box-shadow:0 10px 35px #102a4315;margin-bottom:22px}.live{font-weight:800;color:#d62828;letter-spacing:1px}.live span{display:inline-block;width:10px;height:10px;border-radius:50%;background:#d62828;margin-right:7px}.player-card h2{font-size:25px;margin:16px 0 5px}.player-card p{color:#64748b}audio{width:100%;margin:15px 0}.primary,.secondary,.install,.buttons a,.buttons button{border:0;border-radius:12px;padding:13px 18px;margin:5px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}.primary{background:#0b5ed7;color:#fff}.secondary{background:#e8eef7;color:#132238}.install{background:#198754;color:#fff}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}.grid article{background:#fff;padding:22px;border-radius:18px;box-shadow:0 7px 24px #102a4310}.icon{font-size:30px}.grid h3{margin:10px 0 6px}.grid p{margin:0;color:#64748b;line-height:1.5}.contact{background:#fff;margin-top:22px;padding:24px;border-radius:18px;text-align:center}.buttons a,.buttons button{background:#0b5ed7;color:#fff}footer{text-align:center;padding:25px;color:#64748b;font-size:13px}@media(max-width:500px){.hero h1{font-size:21px}.player-card{padding:20px}.primary{width:100%}}
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f3f7fc;
+  color: #132238;
+  line-height: 1.5;
+}
+
+/* ================= HEADER ================= */
+
+.hero {
+  background: linear-gradient(135deg, #0b5ed7, #073b8f);
+  color: #fff;
+  padding: 30px 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 8px 25px #001f4d30;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  border-radius: 20px;
+  background: #fff;
+  color: #0b5ed7;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 23px;
+  box-shadow: 0 8px 25px #001f4d55;
+}
+
+.hero h1 {
+  margin: 5px 0 0;
+  font-size: 28px;
+}
+
+.hero p {
+  margin: 5px 0 0;
+  opacity: 0.92;
+  font-size: 16px;
+}
+
+/* ================= LIVE ================= */
+
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  background: #ff3030;
+  border-radius: 50%;
+  animation: livePulse 1.2s infinite;
+  box-shadow: 0 0 0 0 #ff303055;
+}
+
+@keyframes livePulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 #ff303077;
+  }
+
+  70% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 9px #ff303500;
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 #ff303500;
+  }
+}
+
+/* ================= MAIN ================= */
+
+main {
+  max-width: 950px;
+  margin: auto;
+  padding: 25px 16px;
+}
+
+/* ================= PLAYER ================= */
+
+.player-card {
+  background: #fff;
+  border-radius: 25px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 10px 35px #102a4315;
+  margin-bottom: 22px;
+}
+
+.radio-icon {
+  font-size: 45px;
+  margin-bottom: 5px;
+}
+
+.player-card h2 {
+  font-size: 26px;
+  margin: 8px 0 5px;
+}
+
+.player-card p {
+  color: #64748b;
+}
+
+audio {
+  width: 100%;
+  margin: 15px 0;
+}
+
+.primary,
+.secondary,
+.install {
+  border: 0;
+  border-radius: 13px;
+  padding: 14px 20px;
+  margin: 5px;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.primary {
+  background: #0b5ed7;
+  color: #fff;
+}
+
+.primary:hover {
+  background: #084caf;
+}
+
+.secondary {
+  background: #e8eef7;
+  color: #132238;
+}
+
+.install {
+  background: #198754;
+  color: #fff;
+}
+
+/* ================= QUICK ACTIONS ================= */
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.action {
+  background: #fff;
+  border: 0;
+  border-radius: 18px;
+  padding: 20px 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #132238;
+  box-shadow: 0 7px 24px #102a4310;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.action:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px #102a4320;
+}
+
+.action span {
+  display: block;
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.action strong {
+  display: block;
+  font-size: 16px;
+}
+
+.action small {
+  display: block;
+  color: #64748b;
+  margin-top: 5px;
+}
+
+.prayer {
+  border-top: 4px solid #0b5ed7;
+}
+
+.whatsapp {
+  border-top: 4px solid #198754;
+}
+
+.share-action {
+  border-top: 4px solid #6f42c1;
+  font-family: inherit;
+}
+
+/* ================= PROGRAMMES ================= */
+
+.programs {
+  background: #fff;
+  border-radius: 22px;
+  padding: 25px;
+  box-shadow: 0 8px 28px #102a4312;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.section-title > span {
+  font-size: 34px;
+}
+
+.section-title h2 {
+  margin: 0;
+}
+
+.section-title p {
+  margin: 3px 0 0;
+  color: #64748b;
+}
+
+.program-list {
+  display: grid;
+  gap: 14px;
+}
+
+.program {
+  display: flex;
+  gap: 15px;
+  padding: 18px;
+  background: #f6f9fd;
+  border-radius: 16px;
+}
+
+.program-icon {
+  font-size: 32px;
+  min-width: 45px;
+}
+
+.program-info h3 {
+  margin: 0 0 5px;
+}
+
+.program-info p {
+  margin: 0 0 10px;
+  color: #64748b;
+}
+
+.program-time {
+  display: inline-block;
+  background: #e3efff;
+  color: #0b5ed7;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ================= SOCIAL ================= */
+
+.social {
+  background: #fff;
+  margin-top: 22px;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 7px 25px #102a4310;
+}
+
+.social h2 {
+  margin-top: 0;
+}
+
+.social p {
+  color: #64748b;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.social-buttons a {
+  background: #0b5ed7;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+/* ================= CONTACT ================= */
+
+.contact {
+  background: #fff;
+  margin-top: 22px;
+  padding: 28px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 7px 25px #102a4310;
+}
+
+.contact p {
+  color: #64748b;
+}
+
+/* ================= WHATSAPP FLOAT ================= */
+
+.whatsapp-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #198754;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  font-size: 28px;
+  box-shadow: 0 7px 25px #00000030;
+  z-index: 1000;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+/* ================= TELEPHONE ================= */
+
+@media (max-width: 650px) {
+
+  .hero {
+    padding: 22px 15px;
+    gap: 12px;
+  }
+
+  .logo {
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    border-radius: 16px;
+    font-size: 19px;
+  }
+
+  .hero h1 {
+    font-size: 21px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  main {
+    padding: 18px 12px;
+  }
+
+  .player-card {
+    padding: 22px 15px;
+  }
+
+  .player-card h2 {
+    font-size: 22px;
+  }
+
+  .primary,
+  .secondary,
+  .install {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .quick-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .action {
+    padding: 16px;
+  }
+
+  .programs {
+    padding: 20px 15px;
+  }
+
+  .program {
+    padding: 15px;
+  }
+
+  .social,
+  .contact {
+    padding: 22px 15px;
+  }
+
+  .whatsapp-float {
+    right: 15px;
+    bottom: 15px;
+  }
+}
