@@ -1,13 +1,15 @@
-const CACHE_NAME = "radio-source-divine-v1";
+const CACHE_NAME = "radio-source-divine-v2";
+
+const BASE = "/radio-source-divine/";
 
 const FILES_TO_CACHE = [
-  "./",
-  "./index.html",
-  "./style.css",
-  "./app.js",
-  "./manifest.json",
-  "./icons/icon-192.png",
-  "./icons/icon-512.png"
+  BASE,
+  BASE + "index.html",
+  BASE + "style.css",
+  BASE + "app.js",
+  BASE + "manifest.json",
+  BASE + "icons/icon-192.png",
+  BASE + "icons/icon-512.png"
 ];
 
 self.addEventListener("install", (event) => {
