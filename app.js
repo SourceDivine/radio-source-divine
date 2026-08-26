@@ -16,21 +16,10 @@ play.addEventListener("click", () => {
 
   radio.src = STREAM;
 
-  radio.play()
-    .then(() => {
+  radio.load();
 
-      status.textContent =
-        "🔴 Radio en direct — Bonne écoute !";
-
-    })
-    .catch((error) => {
-
-      console.error("Erreur lecture radio :", error);
-
-      status.textContent =
-        "Cliquez sur ▶ dans le lecteur pour démarrer la radio.";
-
-    });
+  status.textContent =
+    "🔴 Cliquez sur ▶ dans le lecteur pour démarrer la radio.";
 
 });
 
